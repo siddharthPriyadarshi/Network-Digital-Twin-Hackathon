@@ -1,10 +1,12 @@
 package com.example.demo.OLT.Entity;
 
 
+import com.example.demo.ONT.Entity.ONT;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
 
 //Optical Network Terminal
 
@@ -29,6 +31,9 @@ public class OLT {
 
     private String createdAt;
     private String updatedAt;
+
+    @Relationship(type = "CONNECTED_TO")
+    private ONT ont;
 
 
 

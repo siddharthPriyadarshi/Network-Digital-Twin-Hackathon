@@ -1,10 +1,14 @@
 package com.example.demo.ONT.Entity;
 
+import com.example.demo.AP.Entity.AP;
 import com.example.demo.OLT.Entity.Device_Status;
 import lombok.Data;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
+
+import java.util.List;
 
 //ONT: Optical Line Termination
 @Data
@@ -23,4 +27,7 @@ public class ONT {
     private Integer temperature;
     private String createdAt;
     private String updatedAt;
+
+    @Relationship(type = "HAS_ACCESS_POINT")
+    List<AP> apConnected;
 }
