@@ -28,4 +28,10 @@ public class OLT {
     private String createdAt;
     private String updatedAt;
 
+
+
+    //relationships
+
+
+
 }
