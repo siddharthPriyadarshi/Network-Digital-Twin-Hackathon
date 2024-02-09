@@ -1,7 +1,7 @@
 package com.example.demo.AP;
 
+import com.example.demo.AP.Entity.AP;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
-import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 import org.springframework.stereotype.Repository;
 
 @Repository

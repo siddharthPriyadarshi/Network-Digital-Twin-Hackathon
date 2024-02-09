@@ -1,8 +1,7 @@
-package com.example.demo.AP;
+package com.example.demo.AP.Entity;
 
 import com.example.demo.OLT.Entity.Device_Status;
 import lombok.Data;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
