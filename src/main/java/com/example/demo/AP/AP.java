@@ -1,19 +1,27 @@
 package com.example.demo.AP;
 
 import com.example.demo.OLT.Entity.Device_Status;
+import lombok.Data;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Property;
 
 import java.util.ArrayList;
 
 
 //Access Point
+@Data
+@Node("AP")
 public class AP {
     @Id
     @GeneratedValue
-    private Integer id ;
+    private Long id ;
+
+    @Property("ssid")
     private String ssid;
+
     private String macAddress;
     private ArrayList<String> supportedFrequencies;
 

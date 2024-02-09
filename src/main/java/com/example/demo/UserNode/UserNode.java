@@ -1,7 +1,15 @@
 package com.example.demo.UserNode;
 
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
+
+@Node("UserNode")
 public class UserNode {
-    private Integer id;
+
+    @Id
+    @GeneratedValue
+    private Long id;
     private String deviceType;
     private String macAddress;
     private String ipAddress;

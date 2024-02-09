@@ -1,10 +1,16 @@
 package com.example.demo.ONT.Entity;
 
 import com.example.demo.OLT.Entity.Device_Status;
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
 
 //ONT: Optical Line Termination
+@Node("ONT")
 public class ONT {
-    private Integer id;
+    @Id
+    @GeneratedValue
+    private Long id;
     private String ipAddress;
     private String firmwareVersion;
     private Integer uplinkSpeed;
