@@ -1,4 +1,4 @@
-package com.example.demo.UserNode;
+package com.example.demo.UserNode.Entity;
 
 import lombok.Data;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
