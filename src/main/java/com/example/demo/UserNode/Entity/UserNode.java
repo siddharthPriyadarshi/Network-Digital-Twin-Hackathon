@@ -18,4 +18,5 @@ public class UserNode {
     private String signalStrength;
     private Integer dataRate;
     private Integer bandwidthUtilization;
+    private Connection_Status connectionStatus;
 }

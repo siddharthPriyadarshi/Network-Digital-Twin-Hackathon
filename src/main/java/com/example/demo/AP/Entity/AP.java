@@ -1,7 +1,7 @@
 package com.example.demo.AP.Entity;
 
 import com.example.demo.OLT.Entity.Device_Status;
-import com.example.demo.UserNode.UserNode;
+import com.example.demo.UserNode.Entity.UserNode;
 import lombok.Data;
 import org.springframework.data.neo4j.core.schema.*;
 
