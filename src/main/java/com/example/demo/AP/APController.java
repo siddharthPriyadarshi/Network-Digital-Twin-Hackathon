@@ -22,6 +22,7 @@ public class APController {
     ResponseEntity<String> createAp(
             @RequestBody AP body
             ){
+//        Long ArrayList<Long> connectedDevices = body.getId()
         apService.saveOrCreate(body);
         log.info("AP created successfully");
         return new ResponseEntity<>("Data Saved Successfully", HttpStatus.OK);
@@ -41,7 +42,7 @@ public class APController {
         }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PutMapping("v1/ap/{id}")
+    @PutMapping("/v1/ap/{id}")
     ResponseEntity<AP> updateAP(
             @PathVariable Long id,
             @RequestBody AP body
@@ -54,7 +55,7 @@ public class APController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("v1/ap/{id}")
+    @DeleteMapping("/v1/ap/{id}")
     ResponseEntity<AP> deleteAp(
             @PathVariable Long id
     ){

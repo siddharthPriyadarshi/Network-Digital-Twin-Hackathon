@@ -30,6 +30,6 @@ public class UserNodeService {
         return UserNodeEntity;
     }
     public boolean existsById(Long id){
-        return  UserNodeRepository.existsById(id);
+        return userNodeRepository.existsById(id);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.demo.AP;
 
 import com.example.demo.AP.Entity.AP;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Optional;
 
 @Service
 public class APService {
+    @Autowired
     APRepository apRepository;
     public AP saveOrCreate(AP ap){
         return apRepository.save(ap);

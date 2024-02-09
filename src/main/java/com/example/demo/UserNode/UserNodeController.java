@@ -10,10 +10,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@RestController
+@RequestMapping("/api/")
 public class UserNodeController {
     @Autowired
     UserNodeService userNodeService;
 
+    @GetMapping("v1/UserNode/connection")
+    public ResponseEntity<String> getConnection(){
+        return new ResponseEntity<>("Connection Established",HttpStatus.OK);
+    }
     @PostMapping("v1/UserNode")
     public ResponseEntity<String> createUserNode(
             @RequestBody UserNode body
