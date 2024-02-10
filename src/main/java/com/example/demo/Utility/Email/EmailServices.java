@@ -33,7 +33,7 @@ public class EmailServices {
                 "        <p style=\"color: #666666;\">Please review the details below:</p>\n" +
                 "        <ul>\n" +
                 "            <li><strong>Device ID:</strong> BKUP2</li>\n" +
-                "            <li><strong>Location:</strong> Location</li>\n" +
+                "            <li><strong>Location:</strong> CHENNAI-OMRs</li>\n" +
                 "            <li><strong>Status:</strong> Active</li>\n" +
                 "        </ul>\n" +
                 "        <p style=\"color: #666666;\">If you have any questions or concerns, please feel free to contact our support team.</p>\n" +

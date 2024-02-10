@@ -12,7 +12,7 @@ public class NdtApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(NdtApplication.class, args);
-		System.out.println("HelloWordl");
+		System.out.println("HelloWorld");
 	}
 
 }
