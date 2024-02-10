@@ -25,6 +25,7 @@ public class UserNodeController {
             @RequestBody UserNode body
     ){
         userNodeService.saveOrCreate(body);
+
         return new ResponseEntity<>("UserNode created successfully", HttpStatus.OK);
     }
 

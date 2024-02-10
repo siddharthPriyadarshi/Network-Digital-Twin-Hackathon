@@ -1,5 +1,6 @@
 package com.example.demo.UserNode;
 
+import com.example.demo.AP.Entity.AP;
 import com.example.demo.UserNode.Entity.UserNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,4 +33,6 @@ public class UserNodeService {
     public boolean existsById(Long id){
         return userNodeRepository.existsById(id);
     }
+
+
 }

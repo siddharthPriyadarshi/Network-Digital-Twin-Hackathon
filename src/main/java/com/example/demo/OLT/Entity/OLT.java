@@ -25,9 +25,10 @@ public class OLT {
     private Integer utilisation;
     private Integer uplinkBandwidth;
     private Integer downlinkBandwidth;
-    private Integer bandwidthUtilisaiton;
+    private Integer bandwidthUtilisaiton; // totlal BW
     private Float errorRate;
     private Device_Status status;
+    private Integer totalBandwidth;
 
     private String createdAt;
     private String updatedAt;
