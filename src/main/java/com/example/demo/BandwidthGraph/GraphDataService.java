@@ -6,6 +6,8 @@ import com.example.demo.BandwidthGraph.Entity.GraphData;
 import com.example.demo.OLT.Entity.Device_Status;
 import com.example.demo.OLT.Entity.OLT;
 import com.example.demo.OLT.OLTRepository;
+import com.example.demo.ONT.Entity.ONT;
+import com.example.demo.Utility.Email.EmailServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,28 @@ import java.util.Map;
 public class GraphDataService {
     @Autowired
     GraphDataRepository graphDataRepository;
+
+    @Autowired
+    private EmailServices emailServices;
+
+    public boolean isSecondaryDeviceAvailable(ONT secondaryDevice, int wastedBandwidth) {
+        // Check status to know whether device is available to connect or not
+        //i.e. device is online or offlice or under_Maintainance
+        if (secondaryDevice.getStatus() == Device_Status.ONLINE ) {
+            // Check if secondary device can handle additional bandwidth
+            if (secondaryDevice.getUplinkSpeed() >= wastedBandwidth) {
+                System.out.println("PRIMARY <-> BACKUP DEVICE");
+                System.out.println("BACKUP DEVICE STARTED");
+
+                emailServices.testEmail("sidmail4606@gmail.com");
+
+                System.out.println("CHECK ADMIN EMAIL(sidmail4606@gmail.com) FOR ANY UPDATE");
+
+                return true;
+            }
+        }
+        return false;
+    }
 
     public GraphData calculateAPBandwidthUtilization(AP ap, OLT olt, int constantBandwidthPerDevice) {
 
@@ -29,15 +53,35 @@ public class GraphDataService {
         int bandwidthRemaining = totalBandwidthOLT - totalBandwidthUtilizedDevices ;
 
         if(bandwidthRemaining < 0){
+            System.out.println("Data packets going to dropped(Bandwidth Remaining): "+ (bandwidthRemaining*-1));
             System.out.println("Device Limit exceeded. Burst Control triggerred");
+
+            if(isSecondaryDeviceAvailable(olt.getBackupOnt(), bandwidthRemaining)){
+
+
+
+            }else{
+                System.out.println("BACKUP OLT DEVICE IS NOT THERE FOR BACKUP");
+            }
+
         }
 
         GraphData graphData = new GraphData();
+
+        if(bandwidthRemaining < 0){
+            bandwidthRemaining = 0;
+        }
         graphData.setBandwidthRemaining(bandwidthRemaining);
         graphData.setDeviceCount(totalDevices);
         graphData.setTotalBandwidthUsed(totalBandwidthUtilizedDevices);
 
         graphDataRepository.save(graphData);
+
+
+
+
+
+
 
         return graphData;
 
@@ -47,7 +91,12 @@ public class GraphDataService {
         GraphData graphData = new GraphData();
         
         graphData.setTotalBandwidthUsed(usedBandwidth);
-        graphData.setBandwidthRemaining(totalBandwidth-usedBandwidth);
+        int remainingBandwidth = totalBandwidth-usedBandwidth;
+
+        if(remainingBandwidth<0){
+            remainingBandwidth = 0;
+        }
+        graphData.setBandwidthRemaining(remainingBandwidth);
         graphData.setDeviceCount(connectedDevices);
         
         return graphDataRepository.save(graphData);

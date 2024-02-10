@@ -36,10 +36,7 @@ public class OLT {
     @Relationship(type = "CONNECTED_TO")
     private ONT ont;
 
-
-
-    //relationships
-
-
+    @Relationship(type = "CONNECTED_TO")
+    private ONT backupOnt;
 
 }
