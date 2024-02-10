@@ -17,4 +17,5 @@ public class GraphData {
     Integer totalBandwidthUsed;
     @Column(name="bw_rem")
     Integer bandwidthRemaining;
+    String dateCreated;
 }

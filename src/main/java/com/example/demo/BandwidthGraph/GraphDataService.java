@@ -31,7 +31,7 @@ public class GraphDataService {
                 System.out.println("PRIMARY <-> BACKUP DEVICE");
                 System.out.println("BACKUP DEVICE STARTED");
 
-                emailServices.testEmail("sidmail4606@gmail.com");
+                emailServices.testEmail("email@gmail.com");
 
                 System.out.println("CHECK ADMIN EMAIL(sidmail4606@gmail.com) FOR ANY UPDATE");
 
@@ -42,32 +42,21 @@ public class GraphDataService {
     }
 
     public GraphData calculateAPBandwidthUtilization(AP ap, OLT olt, int constantBandwidthPerDevice) {
-
-//        int totalBandwidthAP = ap.getTotalBandwidth();
-
         int totalDevices = ap.getCurrentConnections();
         int totalBandwidthUtilizedDevices = totalDevices * constantBandwidthPerDevice;
-
         int totalBandwidthOLT = olt.getBandwidthUtilisaiton();
-
         int bandwidthRemaining = totalBandwidthOLT - totalBandwidthUtilizedDevices ;
-
         if(bandwidthRemaining < 0){
             System.out.println("Data packets going to dropped(Bandwidth Remaining): "+ (bandwidthRemaining*-1));
             System.out.println("Device Limit exceeded. Burst Control triggerred");
-
             if(isSecondaryDeviceAvailable(olt.getBackupOnt(), bandwidthRemaining)){
-
-
-
+                System.out.println("Switching to other secondary device");
+                emailServices.testEmail("email@gmail.com"); //triggerAlert
             }else{
                 System.out.println("BACKUP OLT DEVICE IS NOT THERE FOR BACKUP");
             }
-
         }
-
         GraphData graphData = new GraphData();
-
         if(bandwidthRemaining < 0){
             bandwidthRemaining = 0;
         }
